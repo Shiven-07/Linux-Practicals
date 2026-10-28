@@ -1,0 +1,149 @@
+Text extraction from the original PDF. Screenshots remain in source.pdf.
+
+=== ORIGINAL PDF PAGE 45 ===
+PRACTICAL 13 
+SSH Configuration 
+Aim 
+To configure an SSH server and access a remote RHEL system using password and key-based 
+authentication. 
+ 
+A. Install SSH server 
+sudo dnf install openssh-server 
+Start: 
+sudo systemctl enable --now sshd 
+Check: 
+systemctl status sshd 
+ 
+B. Find IP 
+ip addr 
+ 
+C. SSH Login 
+From another Linux machine: 
+ssh username@IP_ADDRESS 
+Example: 
+ssh labuser@192.168.56.20 
+ 
+D. Generate SSH Key 
+On the client: 
+ssh-keygen -t ed25519 
+When prompted, enter a passphrase. 
+ 
+E. Copy Public Key 
+ssh-copy-id labuser@192.168.56.20 
+Login: 
+ssh labuser@192.168.56.20 
+The private key should remain protected and should never be copied to the server.
+
+=== ORIGINAL PDF PAGE 46 ===
+PRACTICAL 14 
+Apache Web Server 
+Aim 
+To configure a basic Apache web server and create a virtual host. 
+ 
+Install Apache 
+sudo dnf install httpd 
+Start: 
+sudo systemctl enable --now httpd 
+Check: 
+systemctl status httpd 
+ 
+Create Web Page 
+sudo vi /var/www/html/index.html 
+Enter: 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>TYIT Linux Practical</title> 
+</head> 
+<body> 
+    <h1>Welcome to TYIT RHEL Web Server</h1> 
+    <p>Apache Web Server is working successfully.</p> 
+</body> 
+</html> 
+Test locally: 
+curl http://localhost 
+ 
+Firewall 
+sudo firewall-cmd --permanent --add-service=http 
+sudo firewall-cmd --reload 
+Check: 
+sudo firewall-cmd --list-services 
+ 
+Apache Configuration Files 
+Important locations: 
+/etc/httpd/ 
+/etc/httpd/conf/httpd.conf 
+/etc/httpd/conf.d/ 
+/var/www/html/ 
+/var/log/httpd/ 
+Check: 
+httpd -t 
+Expected: 
+Syntax OK
+
+=== ORIGINAL PDF PAGE 47 ===
+Virtual Host 
+Create: 
+sudo vi /etc/httpd/conf.d/tyit.conf 
+Example: 
+<VirtualHost *:80> 
+    ServerName tyit.local 
+    DocumentRoot /var/www/tyit 
+ 
+    <Directory /var/www/tyit> 
+        AllowOverride None 
+        Require all granted 
+    </Directory> 
+</VirtualHost> 
+Create directory: 
+sudo mkdir -p /var/www/tyit 
+Create page: 
+echo "TYIT Virtual Host" | sudo tee /var/www/tyit/index.html 
+Check configuration: 
+sudo httpd -t 
+Restart: 
+sudo systemctl restart httpd
+
+=== ORIGINAL PDF PAGE 48 ===
+PRACTICAL 15 
+Firewall Configuration 
+Aim 
+To configure Linux firewall using firewalld and study the relationship with iptables/nftables. 
+ 
+A. Check firewalld 
+sudo systemctl status firewalld 
+ 
+B. Start firewall 
+sudo systemctl enable --now firewalld 
+ 
+C. Check active zone 
+sudo firewall-cmd --get-active-zones 
+ 
+D. List services 
+sudo firewall-cmd --list-services 
+ 
+E. Allow HTTP 
+sudo firewall-cmd --permanent --add-service=http 
+sudo firewall-cmd --reload 
+Verify: 
+sudo firewall-cmd --list-services 
+ 
+F. Allow HTTPS 
+sudo firewall-cmd --permanent --add-service=https 
+sudo firewall-cmd --reload 
+ 
+G. Remove service 
+sudo firewall-cmd --permanent --remove-service=http 
+sudo firewall-cmd --reload 
+RHEL documentation recommends predefined firewalld services for allowing required 
+service traffic.  
+ 
+iptables 
+Check availability: 
+sudo iptables -L 
+On modern RHEL, students should understand that the underlying packet-filtering 
+architecture is based around nftables, while firewalld provides the normal high-level 
+management interface.
+
+=== ORIGINAL PDF PAGE 49 ===
+[Image-based page: open source.pdf for screenshots.]

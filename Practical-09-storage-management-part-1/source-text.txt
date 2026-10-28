@@ -1,0 +1,67 @@
+Text extraction from the original PDF. Screenshots remain in source.pdf.
+
+=== ORIGINAL PDF PAGE 38 ===
+PRACTICAL 11 
+Storage Management 
+Aim 
+To study MBR/GPT, partitions, file systems, mounting, UUID, labels, LVM and swap. 
+WARNING: Perform this practical only on an additional virtual disk. 
+ 
+A. Identify disks 
+lsblk 
+sudo fdisk -l 
+lsblk -f
+
+=== ORIGINAL PDF PAGE 39 ===
+B. MBR/GPT 
+Check partition table: 
+sudo fdisk -l /dev/sdb 
+For GPT information: 
+sudo parted /dev/sdb print 
+Do not use /dev/sda unless you have positively confirmed it is the disposable lab disk. 
+ 
+C. Create partition 
+Example: 
+sudo fdisk /dev/sdb 
+Inside fdisk, commands vary according to the desired partition table. Always verify the disk 
+before writing changes. 
+ 
+D. Create XFS 
+After creating a disposable partition such as /dev/sdb1:
+
+=== ORIGINAL PDF PAGE 40 ===
+sudo mkfs.xfs /dev/sdb1 
+ 
+E. Create ext4 
+sudo mkfs.ext4 /dev/sdb1 
+ 
+F. Create VFAT 
+sudo mkfs.vfat /dev/sdb1 
+ 
+G. Mount 
+Create mount point: 
+sudo mkdir /mnt/lab 
+Mount: 
+sudo mount /dev/sdb1 /mnt/lab 
+Verify: 
+df -h /mnt/lab 
+Unmount: 
+sudo umount /mnt/lab 
+ 
+H. UUID 
+lsblk -f 
+or: 
+sudo blkid /dev/sdb1 
+Example: 
+/dev/sdb1: UUID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" TYPE="xfs" 
+ 
+I. Mount using UUID 
+Edit: 
+sudo vi /etc/fstab 
+Example: 
+UUID=YOUR-UUID-HERE /mnt/lab xfs defaults 0 0 
+Test: 
+sudo mount -a 
+Then: 
+df -h 
+Students must use the actual UUID produced by their own system, not the example UUID.

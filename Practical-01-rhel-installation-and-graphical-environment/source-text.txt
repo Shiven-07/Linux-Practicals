@@ -1,0 +1,156 @@
+Text extraction from the original PDF. Screenshots remain in source.pdf.
+
+=== ORIGINAL PDF PAGE 1 ===
+PRACTICAL 1 
+Installing RHEL and Studying the Linux Graphical Environment 
+Aim 
+To install Red Hat Enterprise Linux in VirtualBox/VMware and study the graphical 
+environment, login manager, desktop environment, directory structure and file systems. 
+Requirements 
+• VirtualBox or VMware  
+• RHEL ISO  
+• 4 GB RAM or more  
+• 30 GB virtual disk  
+ 
+A. Creating the Virtual Machine 
+Procedure 
+1. Open VirtualBox/VMware.  
+2. Create a new virtual machine.  
+3. Select Linux / Red Hat Enterprise Linux 64-bit.  
+4. Allocate RAM.  
+5. Create a virtual hard disk.  
+6. Attach the RHEL ISO.  
+7. Start the VM.  
+8. Select Install Red Hat Enterprise Linux.  
+9. Select language and keyboard.  
+10. Configure:  
+• Installation destination  
+• Network  
+• Time zone  
+• User account  
+• Root password  
+11. Begin installation.  
+12. Reboot after installation.  
+13. Log in.
+
+=== ORIGINAL PDF PAGE 2 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 3 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 4 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 5 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 6 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 7 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 8 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 9 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 10 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 11 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 12 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 13 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 14 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 15 ===
+Successfully logged-in RHEL desktop. 
+ 
+B. Linux Graphical Environment 
+1. Display/Login Manager 
+Check the display manager: 
+systemctl status display-manager 
+Expected Output 
+● gdm.service - GNOME Display Manager 
+     Loaded: loaded 
+     Active: active (running) 
+Run: 
+systemctl status display-manager 
+Print this terminal output. 
+ 
+ 
+2. Desktop Environment 
+RHEL Workstation commonly uses GNOME.
+
+=== ORIGINAL PDF PAGE 16 ===
+Execute: 
+echo $XDG_CURRENT_DESKTOP 
+echo $DESKTOP_SESSION 
+Expected Output 
+GNOME 
+gnome 
+Check operating system: 
+cat /etc/os-release 
+Expected Output 
+NAME="Red Hat Enterprise Linux" 
+VERSION="10..." 
+ID="rhel" 
+ 
+ 
+C. Linux Directory Structure 
+Execute: 
+ls / 
+Typical directories include: 
+bin 
+boot 
+dev 
+etc 
+home 
+lib 
+lib64 
+media 
+mnt 
+opt 
+proc 
+root 
+run
+
+=== ORIGINAL PDF PAGE 17 ===
+sbin 
+srv 
+sys 
+tmp 
+usr 
+var 
+Important Directories 
+Directory Purpose 
+/ Root directory 
+/boot Boot-related files 
+/etc System configuration 
+/home User home directories 
+/root Root user's home 
+/tmp Temporary files 
+/usr User applications and system resources 
+/var Variable data/logs 
+/dev Device files 
+/proc Process/kernel information 
+/sys Kernel/device information 
+/mnt Temporary mount point 
+/opt Optional software 
+Commands 
+pwd 
+ls -lah / 
+du -sh /var 
+df -h
+
+=== ORIGINAL PDF PAGE 18 ===
+[Image-based page: open source.pdf for screenshots.]

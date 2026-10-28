@@ -1,0 +1,70 @@
+Text extraction from the original PDF. Screenshots remain in source.pdf.
+
+=== ORIGINAL PDF PAGE 40 ===
+sudo mkfs.xfs /dev/sdb1 
+ 
+E. Create ext4 
+sudo mkfs.ext4 /dev/sdb1 
+ 
+F. Create VFAT 
+sudo mkfs.vfat /dev/sdb1 
+ 
+G. Mount 
+Create mount point: 
+sudo mkdir /mnt/lab 
+Mount: 
+sudo mount /dev/sdb1 /mnt/lab 
+Verify: 
+df -h /mnt/lab 
+Unmount: 
+sudo umount /mnt/lab 
+ 
+H. UUID 
+lsblk -f 
+or: 
+sudo blkid /dev/sdb1 
+Example: 
+/dev/sdb1: UUID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" TYPE="xfs" 
+ 
+I. Mount using UUID 
+Edit: 
+sudo vi /etc/fstab 
+Example: 
+UUID=YOUR-UUID-HERE /mnt/lab xfs defaults 0 0 
+Test: 
+sudo mount -a 
+Then: 
+df -h 
+Students must use the actual UUID produced by their own system, not the example UUID.
+
+=== ORIGINAL PDF PAGE 41 ===
+J. LVM 
+Display: 
+sudo pvs 
+sudo vgs 
+sudo lvs 
+On a disposable partition: 
+sudo pvcreate /dev/sdb1 
+Create volume group: 
+sudo vgcreate tyitvg /dev/sdb1 
+Create logical volume: 
+sudo lvcreate -L 1G -n tyitlv tyitvg 
+Create file system: 
+sudo mkfs.xfs /dev/tyitvg/tyitlv 
+Mount: 
+sudo mkdir /mnt/tyit
+
+=== ORIGINAL PDF PAGE 42 ===
+sudo mount /dev/tyitvg/tyitlv /mnt/tyit 
+Verify: 
+df -h /mnt/tyit 
+ 
+K. Swap 
+Check: 
+swapon --show 
+For a dedicated disposable swap partition, use the appropriate partition device: 
+sudo mkswap /dev/sdb2 
+sudo swapon /dev/sdb2 
+Verify: 
+swapon --show 
+Do not run mkswap on an existing system partition.

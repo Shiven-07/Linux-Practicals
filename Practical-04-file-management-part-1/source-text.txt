@@ -1,0 +1,85 @@
+Text extraction from the original PDF. Screenshots remain in source.pdf.
+
+=== ORIGINAL PDF PAGE 24 ===
+PRACTICAL 4 
+File and Directory Management 
+Aim 
+To create, delete, copy and move files and directories. 
+ 
+Create directory 
+mkdir tyit_lab 
+cd tyit_lab 
+Create files 
+touch file1.txt file2.txt file3.txt 
+List files 
+ls -l 
+Copy file 
+cp file1.txt file1_backup.txt 
+Move/rename 
+mv file2.txt renamed.txt 
+Create directory 
+mkdir documents 
+Copy directory 
+cp -r documents documents_backup 
+Remove file 
+rm file3.txt 
+Remove directory 
+rm -r documents_backup
+
+=== ORIGINAL PDF PAGE 25 ===
+PRACTICAL 5 
+Links, Archives and Compression 
+Aim 
+To create hard/soft links and manage compressed and archived files. 
+ 
+A. Hard Link 
+Create a file: 
+echo "TYIT Linux" > original.txt 
+Create hard link: 
+ln original.txt hardlink.txt 
+Check inode: 
+ls -li original.txt hardlink.txt 
+Both files should have the same inode number. 
+ 
+ 
+ 
+B. Soft Link 
+ln -s original.txt softlink.txt 
+Check: 
+ls -l softlink.txt 
+Expected: 
+softlink.txt -> original.txt 
+ 
+ 
+C. tar 
+Create archive: 
+tar -cvf tyit.tar original.txt hardlink.txt 
+List archive: 
+tar -tvf tyit.tar 
+Extract: 
+mkdir extracted 
+tar -xvf tyit.tar -C extracted
+
+=== ORIGINAL PDF PAGE 26 ===
+D. gzip 
+gzip original.txt 
+Check: 
+ls 
+Uncompress: 
+gunzip original.txt.gz 
+ 
+E. bzip2 
+bzip2 original.txt 
+Uncompress: 
+bunzip2 original.txt.bz2 
+ 
+F. star 
+If star is installed: 
+star -c -f=tyit.star original.txt 
+List: 
+star -t -f=tyit.star 
+If star is not installed in your RHEL installation, install the package through the configured 
+RHEL repositories or demonstrate the equivalent tar operation.
+
+=== ORIGINAL PDF PAGE 27 ===
+[Image-based page: open source.pdf for screenshots.]

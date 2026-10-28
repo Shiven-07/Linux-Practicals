@@ -1,0 +1,71 @@
+Text extraction from the original PDF. Screenshots remain in source.pdf.
+
+=== ORIGINAL PDF PAGE 21 ===
+PRACTICAL 3 
+grep, Regular Expressions and Text Processing 
+Aim 
+To analyse text using grep, regular expressions and text-processing commands. 
+Create a file: 
+cat > students.txt 
+Enter: 
+Amit TYIT 85 
+Neha TYIT 92 
+Rahul SYIT 76 
+Priya TYIT 88 
+Rohan SYIT 69 
+Sneha TYIT 95 
+Press Ctrl+D. 
+ 
+grep 
+grep TYIT students.txt 
+Expected: 
+Amit TYIT 85 
+Neha TYIT 92 
+Priya TYIT 88 
+Sneha TYIT 95 
+ 
+Case-insensitive grep 
+grep -i tyit students.txt 
+ 
+Line numbers 
+grep -n TYIT students.txt 
+ 
+Regular Expression 
+Find lines beginning with A: 
+grep '^A' students.txt 
+Find lines ending with 5: 
+grep '5$' students.txt 
+Find exactly three digits: 
+grep -E '[0-9]{3}' students.txt 
+ 
+Text File Commands 
+cat 
+cat students.txt 
+head 
+Your syllabus says hesd; the correct command is: 
+head students.txt 
+tail 
+tail students.txt 
+less
+
+=== ORIGINAL PDF PAGE 22 ===
+less students.txt 
+Press q to exit. 
+cut 
+cut -d' ' -f1 students.txt 
+sort 
+sort students.txt 
+wc 
+wc students.txt 
+awk 
+awk '{print $1,$3}' students.txt 
+Expected: 
+Amit 85 
+Neha 92 
+Rahul 76 
+Priya 88 
+Rohan 69 
+Sneha 95
+
+=== ORIGINAL PDF PAGE 23 ===
+[Image-based page: open source.pdf for screenshots.]

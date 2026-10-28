@@ -1,0 +1,47 @@
+Text extraction from the original PDF. Screenshots remain in source.pdf.
+
+=== ORIGINAL PDF PAGE 34 ===
+PRACTICAL 8 
+Software Package Management 
+Aim 
+To manage software using DNF/YUM and RPM. 
+Current RHEL 10 documentation identifies DNF as the package-management tool.  
+ 
+A. DNF 
+Check repositories: 
+sudo dnf repolist 
+Search package: 
+dnf search httpd 
+Install: 
+sudo dnf install httpd 
+Check package: 
+dnf info httpd 
+Update: 
+sudo dnf update 
+Remove: 
+sudo dnf remove httpd 
+RHEL documentation confirms commands such as dnf search, dnf repolist, dnf install, dnf 
+remove, and dnf update.  
+ 
+B. YUM 
+On modern RHEL systems: 
+yum repolist 
+yum search httpd 
+sudo yum install httpd 
+yum may act as a compatibility interface to DNF on current RHEL systems. 
+ 
+C. RPM 
+Query: 
+rpm -q bash 
+Package information: 
+rpm -qi bash 
+List files: 
+rpm -ql bash 
+Verify: 
+rpm -V bash 
+ 
+D. Local RPM 
+For a local RPM: 
+sudo dnf install ./package-name.rpm 
+RHEL 10 documentation explicitly supports installing a local RPM using dnf install 
+<path_to_RPM_file>.

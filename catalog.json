@@ -1,0 +1,208 @@
+[
+  {
+    "number": 1,
+    "title": "Installing RHEL and Linux Graphical Environment",
+    "folder": "Practical-01-rhel-installation-and-graphical-environment",
+    "indexDate": "02-Jul-2026",
+    "sourceSections": "1",
+    "originalPages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "guide": "Practical-01-rhel-installation-and-graphical-environment/README.md",
+    "source": "Practical-01-rhel-installation-and-graphical-environment/source.pdf"
+  },
+  {
+    "number": 2,
+    "title": "Basic System Commands",
+    "folder": "Practical-02-basic-system-commands",
+    "indexDate": "09-Jul-2026",
+    "sourceSections": "2-3",
+    "originalPages": [
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "guide": "Practical-02-basic-system-commands/README.md",
+    "source": "Practical-02-basic-system-commands/source.pdf"
+  },
+  {
+    "number": 3,
+    "title": "Working with Text Files",
+    "folder": "Practical-03-working-with-text-files",
+    "indexDate": "16-Jul-2026",
+    "sourceSections": "3",
+    "originalPages": [
+      21,
+      22,
+      23
+    ],
+    "guide": "Practical-03-working-with-text-files/README.md",
+    "source": "Practical-03-working-with-text-files/source.pdf"
+  },
+  {
+    "number": 4,
+    "title": "Essential File Management Tools - Part 1",
+    "folder": "Practical-04-file-management-part-1",
+    "indexDate": "23-Jul-2026",
+    "sourceSections": "4-5",
+    "originalPages": [
+      24,
+      25,
+      26,
+      27
+    ],
+    "guide": "Practical-04-file-management-part-1/README.md",
+    "source": "Practical-04-file-management-part-1/source.pdf"
+  },
+  {
+    "number": 5,
+    "title": "Essential File Management Tools - Part 2",
+    "folder": "Practical-05-file-management-part-2",
+    "indexDate": "30-Jul-2026",
+    "sourceSections": "5-6",
+    "originalPages": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "guide": "Practical-05-file-management-part-2/README.md",
+    "source": "Practical-05-file-management-part-2/source.pdf"
+  },
+  {
+    "number": 6,
+    "title": "Working with Users, Groups and Permissions",
+    "folder": "Practical-06-users-groups-and-permissions",
+    "indexDate": "06-Aug-2026",
+    "sourceSections": "6-7",
+    "originalPages": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
+    ],
+    "guide": "Practical-06-users-groups-and-permissions/README.md",
+    "source": "Practical-06-users-groups-and-permissions/source.pdf"
+  },
+  {
+    "number": 7,
+    "title": "Managing Software",
+    "folder": "Practical-07-software-management",
+    "indexDate": "13-Aug-2026",
+    "sourceSections": "8",
+    "originalPages": [
+      34
+    ],
+    "guide": "Practical-07-software-management/README.md",
+    "source": "Practical-07-software-management/source.pdf"
+  },
+  {
+    "number": 8,
+    "title": "Managing Processes",
+    "folder": "Practical-08-process-and-job-management",
+    "indexDate": "20-Aug-2026",
+    "sourceSections": "9-10",
+    "originalPages": [
+      35,
+      36,
+      37
+    ],
+    "guide": "Practical-08-process-and-job-management/README.md",
+    "source": "Practical-08-process-and-job-management/source.pdf"
+  },
+  {
+    "number": 9,
+    "title": "Managing Storage - Part 1",
+    "folder": "Practical-09-storage-management-part-1",
+    "indexDate": "27-Aug-2026",
+    "sourceSections": "11 (first part)",
+    "originalPages": [
+      38,
+      39,
+      40
+    ],
+    "guide": "Practical-09-storage-management-part-1/README.md",
+    "source": "Practical-09-storage-management-part-1/source.pdf"
+  },
+  {
+    "number": 10,
+    "title": "Managing Storage - Part 2",
+    "folder": "Practical-10-storage-management-part-2",
+    "indexDate": "03-Sep-2026",
+    "sourceSections": "11 (second part)",
+    "originalPages": [
+      40,
+      41,
+      42
+    ],
+    "guide": "Practical-10-storage-management-part-2/README.md",
+    "source": "Practical-10-storage-management-part-2/source.pdf"
+  },
+  {
+    "number": 11,
+    "title": "Configuring Networking",
+    "folder": "Practical-11-network-configuration",
+    "indexDate": "10-Sep-2026",
+    "sourceSections": "12",
+    "originalPages": [
+      43,
+      44
+    ],
+    "guide": "Practical-11-network-configuration/README.md",
+    "source": "Practical-11-network-configuration/source.pdf"
+  },
+  {
+    "number": 12,
+    "title": "SSH, Web Server and Firewall",
+    "folder": "Practical-12-ssh-web-server-and-firewall",
+    "indexDate": "17-Sep-2026",
+    "sourceSections": "13-15",
+    "originalPages": [
+      45,
+      46,
+      47,
+      48,
+      49
+    ],
+    "guide": "Practical-12-ssh-web-server-and-firewall/README.md",
+    "source": "Practical-12-ssh-web-server-and-firewall/source.pdf"
+  },
+  {
+    "number": 13,
+    "title": "Network Storage, Shell Scripting and Scheduling",
+    "folder": "Practical-13-network-storage-shell-scripting-and-scheduling",
+    "indexDate": "24-Sep-2026",
+    "sourceSections": "16-18",
+    "originalPages": [
+      50,
+      51,
+      52,
+      53
+    ],
+    "guide": "Practical-13-network-storage-shell-scripting-and-scheduling/README.md",
+    "source": "Practical-13-network-storage-shell-scripting-and-scheduling/source.pdf"
+  }
+]

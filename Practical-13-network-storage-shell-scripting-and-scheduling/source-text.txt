@@ -1,0 +1,139 @@
+Text extraction from the original PDF. Screenshots remain in source.pdf.
+
+=== ORIGINAL PDF PAGE 50 ===
+PRACTICAL 16 
+NFS and CIFS Network Storage 
+Aim 
+To access remote NFS/CIFS network storage and configure persistent mounts. 
+ 
+A. NFS Client 
+Install: 
+sudo dnf install nfs-utils 
+List exports from server: 
+showmount -e SERVER_IP 
+Mount: 
+sudo mkdir /mnt/nfs 
+sudo mount SERVER_IP:/shared /mnt/nfs 
+Check: 
+df -h /mnt/nfs 
+ 
+ 
+B. NFS in /etc/fstab 
+Example: 
+SERVER_IP:/shared /mnt/nfs nfs defaults,_netdev 0 0 
+Test: 
+sudo mount -a 
+ 
+C. CIFS 
+Install: 
+sudo dnf install cifs-utils 
+Create mount point: 
+sudo mkdir /mnt/cifs 
+Mount: 
+sudo mount -t cifs //SERVER_IP/share /mnt/cifs -o username=USER 
+The command will prompt for a password where appropriate. 
+ 
+D. Automount 
+ 
+sudo dnf install autofs 
+Enable: 
+sudo systemctl enable --now autofs 
+Configuration depends on the NFS/CIFS server and mount map being used.
+
+=== ORIGINAL PDF PAGE 51 ===
+PRACTICAL 17 
+Shell Scripting 
+Aim 
+To create shell scripts for system information, automation and process monitoring. 
+ 
+A. System Information Script 
+Create: 
+vi systeminfo.sh 
+Enter: 
+#!/bin/bash 
+ 
+echo "===== SYSTEM INFORMATION =====" 
+ 
+echo "Hostname:" 
+hostname 
+ 
+echo "Kernel:" 
+uname -r 
+ 
+echo "Operating System:" 
+cat /etc/os-release | grep '^PRETTY_NAME' 
+ 
+echo "Current User:" 
+whoami 
+ 
+echo "Date:" 
+date 
+ 
+echo "Uptime:" 
+uptime 
+ 
+echo "Memory:" 
+free -h 
+ 
+echo "Disk:" 
+df -h / 
+Make executable: 
+chmod +x systeminfo.sh 
+Run: 
+./systeminfo.sh 
+ 
+B. Process Monitoring Script 
+Create: 
+vi process_monitor.sh 
+Enter: 
+#!/bin/bash
+
+=== ORIGINAL PDF PAGE 52 ===
+echo "===== TOP CPU PROCESSES =====" 
+ 
+ps -eo pid,user,%cpu,%mem,comm --sort=-%cpu | head -n 6 
+ 
+echo 
+echo "===== TOP MEMORY PROCESSES =====" 
+ 
+ps -eo pid,user,%cpu,%mem,comm --sort=-%mem | head -n 6 
+Run: 
+chmod +x process_monitor.sh 
+./process_monitor.sh
+
+=== ORIGINAL PDF PAGE 53 ===
+PRACTICAL 18 
+Scheduling Tasks Using Cron and At 
+Aim 
+To schedule recurring and one-time tasks using cron and at. 
+ 
+A. Cron 
+Check service: 
+systemctl status crond 
+ 
+Cron format 
+Minute Hour Day Month Weekday Command 
+Example: 
+* * * * * command 
+means every minute. 
+ 
+Create Cron Job 
+Edit: 
+crontab -e 
+Example: 
+*/5 * * * * date >> /home/student/cron-output.txt 
+This writes the date every five minutes. 
+List cron jobs: 
+crontab -l 
+ 
+B. at 
+Install if required: 
+sudo dnf install at 
+Enable service: 
+sudo systemctl enable --now atd 
+Schedule command: 
+echo "date >> /home/student/at-output.txt" | at 23:00 
+List jobs: 
+atq 
+Remove a job: 
+atrm JOB_NUMBER

@@ -1,0 +1,74 @@
+Text extraction from the original PDF. Screenshots remain in source.pdf.
+
+=== ORIGINAL PDF PAGE 35 ===
+PRACTICAL 9 
+Process Management 
+Aim 
+To monitor, analyse and control Linux processes. 
+ 
+View processes 
+ps 
+ps aux 
+ps -ef 
+ 
+Find a process 
+ps aux | grep ssh 
+ 
+Process tree 
+pstree 
+If unavailable: 
+ps --forest 
+ 
+top 
+top 
+Press: 
+q 
+to exit. 
+ 
+ 
+ 
+Identify resource-intensive processes 
+ps -eo pid,user,%cpu,%mem,comm --sort=-%cpu | head 
+Memory: 
+ps -eo pid,user,%cpu,%mem,comm --sort=-%mem | head 
+ 
+Kill Process
+
+=== ORIGINAL PDF PAGE 36 ===
+Find PID: 
+pgrep sleep 
+Terminate: 
+kill PID 
+If necessary: 
+kill -9 PID 
+Use kill -9 only when normal termination does not work. 
+ 
+tuned 
+Check: 
+systemctl status tuned 
+List profiles: 
+tuned-adm list 
+Current profile: 
+tuned-adm active
+
+=== ORIGINAL PDF PAGE 37 ===
+PRACTICAL 10 
+Shell Job Management 
+Aim 
+To manage foreground and background jobs. 
+Run: 
+sleep 300 
+Press: 
+Ctrl+Z 
+Resume in background: 
+bg 
+Display jobs: 
+jobs 
+Bring to foreground: 
+fg 
+Run directly in background: 
+sleep 300 & 
+Check: 
+jobs 
+Terminate: 
+kill %1

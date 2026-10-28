@@ -1,0 +1,59 @@
+Text extraction from the original PDF. Screenshots remain in source.pdf.
+
+=== ORIGINAL PDF PAGE 43 ===
+PRACTICAL 12 
+Network Configuration 
+Aim 
+To configure and verify IPv4/IPv6 addresses, interfaces, DNS and hostname using nmcli and 
+nmtui. 
+ 
+A. Show interfaces 
+ip addr 
+ip link 
+ 
+B. NetworkManager 
+systemctl status NetworkManager 
+ 
+C. nmcli 
+Show connections: 
+nmcli connection show 
+Show devices: 
+nmcli device status 
+Show IP information: 
+nmcli device show 
+ 
+D. Configure IPv4 
+First identify the connection: 
+nmcli connection show 
+Example: 
+sudo nmcli connection modify "Wired connection 1" ipv4.addresses 192.168.56.20/24 
+Gateway: 
+sudo nmcli connection modify "Wired connection 1" ipv4.gateway 192.168.56.1 
+DNS: 
+sudo nmcli connection modify "Wired connection 1" ipv4.dns "8.8.8.8" 
+Set manual addressing: 
+sudo nmcli connection modify "Wired connection 1" ipv4.method manual 
+Activate: 
+sudo nmcli connection up "Wired connection 1" 
+The exact connection name and address range depend on the student's VirtualBox/VMware 
+network configuration. 
+ 
+E. nmtui 
+sudo nmtui 
+Use: 
+Edit a connection 
+Configure IPv4/IPv6. 
+ 
+F. Hostname 
+hostnamectl 
+Set:
+
+=== ORIGINAL PDF PAGE 44 ===
+sudo hostnamectl set-hostname rhel-lab 
+Verify: 
+hostnamectl 
+ 
+G. Test network 
+ping -c 4 8.8.8.8 
+DNS test: 
+ping -c 4 redhat.com

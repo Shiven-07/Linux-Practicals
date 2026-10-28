@@ -1,0 +1,130 @@
+Text extraction from the original PDF. Screenshots remain in source.pdf.
+
+=== ORIGINAL PDF PAGE 28 ===
+PRACTICAL 6 
+File Ownership, Permissions and ACL 
+Aim 
+To manage Linux ownership, standard permissions, special permissions and ACLs. 
+ 
+A. View permissions 
+ls -l 
+Example: 
+-rw-r--r-- 1 student student 15 Sep 20 10:20 file.txt 
+Permission format: 
+- rw- r-- r-- 
+  |   |   | 
+  |   |   +--- Others 
+  |   +------- Group 
+  +----------- Owner 
+ 
+B. chmod 
+Create file: 
+touch permission.txt 
+Set permissions: 
+chmod 755 permission.txt 
+Check: 
+ls -l permission.txt 
+ 
+Numeric Permissions 
+Number Permission 
+0 --- 
+1 --x 
+2 -w- 
+3 -wx 
+4 r-- 
+5 r-x 
+6 rw- 
+7 rwx 
+Example: 
+chmod 644 file.txt 
+ 
+C. chown 
+sudo chown root:root permission.txt 
+Check: 
+ls -l permission.txt 
+ 
+D. umask 
+umask 
+Temporarily set:
+
+=== ORIGINAL PDF PAGE 29 ===
+umask 027 
+Create: 
+touch umaskfile 
+Check: 
+ls -l umaskfile 
+ 
+E. set-GID Directory 
+Create group: 
+sudo groupadd project 
+Create directory: 
+sudo mkdir /project 
+Change group: 
+sudo chgrp project /project 
+Set set-GID: 
+sudo chmod 2775 /project 
+Verify: 
+ls -ld /project 
+The group directory should show s in the group permission position. 
+ 
+F. ACL 
+Check ACL: 
+getfacl permission.txt 
+Set ACL: 
+sudo setfacl -m u:student:rw permission.txt 
+Check: 
+getfacl permission.txt 
+Remove ACL: 
+sudo setfacl -x u:student permission.txt
+
+=== ORIGINAL PDF PAGE 30 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 31 ===
+PRACTICAL 7 
+Users, Groups and Superuser Administration 
+Aim 
+To create and manage users/groups, configure passwords, password aging and superuser 
+access. 
+ 
+Create User 
+sudo useradd labuser 
+Set password: 
+sudo passwd labuser 
+ 
+Create Group 
+sudo groupadd tyitgroup 
+Add user to group: 
+sudo usermod -aG tyitgroup labuser 
+Verify: 
+id labuser 
+ 
+Password Aging 
+sudo chage -l labuser 
+Set maximum password age: 
+sudo chage -M 90 labuser 
+Set minimum age: 
+sudo chage -m 1 labuser 
+Set warning period: 
+sudo chage -W 7 labuser 
+Verify: 
+sudo chage -l labuser 
+ 
+su 
+su - labuser 
+Return: 
+exit 
+ 
+sudo 
+Check: 
+sudo -l 
+Run administrative command: 
+sudo whoami 
+Expected: 
+root
+
+=== ORIGINAL PDF PAGE 32 ===
+[Image-based page: open source.pdf for screenshots.]
+
+=== ORIGINAL PDF PAGE 33 ===
+[Image-based page: open source.pdf for screenshots.]
